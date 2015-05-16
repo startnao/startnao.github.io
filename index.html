@@ -112,12 +112,12 @@ ga('send', 'pageview');
 </ul>
 <p>By searching a bit on Internet, we were able to build a movement tracker that would create red rectangles around what move in real time.</p>
 <h2 id="II-_Quantify_the_amount_of_movement">II. Quantify the amount of movement</h2><p>Once we were able to detect movement, the next issue was to quantify that movement in order to trigger or not our action.</p>
-<h3 id="Â_a-_First_try:_percentage_of_the_image_in_movement">Â a. First try: percentage of the image in movement</h3><p>Our first implemetation used a percentage of the image covered by red rectangles: if more than 30% of the image was in movement, we trigger the actions. However, this method wasn’t greate for two main reasons:</p>
+<h3 id="a-_First_try:_percentage_of_the_image_in_movement">a. First try: percentage of the image in movement</h3><p>Our first implemetation used a percentage of the image covered by red rectangles: if more than 30% of the image was in movement, we trigger the actions. However, this method wasn’t greate for two main reasons:</p>
 <ul>
 <li>We didn’t have a notion of time, so a single big movement could be enough to trigger the system ;</li>
 <li>Every single movement, even the smallest ones like a face movement, we tracked, so the percentage was pretty bad ;</li>
 </ul>
-<h3 id="Â_b-_Improve_the_method_by_adding_time_and_ignoring_some_rectangles">Â b. Improve the method by adding time and ignoring some rectangles</h3><p>In a second and third implementations, we worked on these problems and solved them by adding a time notion and by ignoring small rectangles. Now, the motion had to be detected for a certain number of frame to trigger the event.</p>
+<h3 id="b-_Improve_the_method_by_adding_time_and_ignoring_some_rectangles">b. Improve the method by adding time and ignoring some rectangles</h3><p>In a second and third implementations, we worked on these problems and solved them by adding a time notion and by ignoring small rectangles. Now, the motion had to be detected for a certain number of frame to trigger the event.</p>
 <p>But we faced a last problem when we tested the code: if someone moved his or her hand very closely to the camera, the system would be triggered even if the motion is small. That is not what we want, so we tried to improve our algorithm.</p>
 <h2 id="III-_The_motion_distance">III. The motion distance</h2><p>The best thing we could do at this step was to test and experiment. After a while, we discovered something interesting: if the motion is far enough, a single big red rectangle is created instead of a lot of small ones. Great!</p>
 <p>Thus we chose to change our algorithm: instead of ignoring too small rectangles, we will consider only the biggest one for the percentage. After some tests, we were proud: our system works pretty well!</p>
