@@ -3,17 +3,20 @@
 <head>
   <meta charset="utf-8">
   
-  <title>StartNao</title>
+  <title>OpenCV, red ball detection | StartNao</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description">
-<meta property="og:type" content="website">
-<meta property="og:title" content="StartNao">
-<meta property="og:url" content="http://startnao.github.io/archives/2015/04/index.html">
+  <meta name="description" content="[4] We are trying to detect red balls on the Nao. First we did it on our computer, here is the code:
+cv21import numpy as np&amp;#10;&amp;#10;#cap = cv2.VideoCapture(0)&amp;#10;c = cv2.VideoCapture(0)&amp;#10;detected">
+<meta property="og:type" content="article">
+<meta property="og:title" content="OpenCV, red ball detection">
+<meta property="og:url" content="http://startnao.github.io/2015/05/18/OpenCV-red-ball-detection/index.html">
 <meta property="og:site_name" content="StartNao">
-<meta property="og:description">
+<meta property="og:description" content="[4] We are trying to detect red balls on the Nao. First we did it on our computer, here is the code:
+cv21import numpy as np&amp;#10;&amp;#10;#cap = cv2.VideoCapture(0)&amp;#10;c = cv2.VideoCapture(0)&amp;#10;detected">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="StartNao">
-<meta name="twitter:description">
+<meta name="twitter:title" content="OpenCV, red ball detection">
+<meta name="twitter:description" content="[4] We are trying to detect red balls on the Nao. First we did it on our computer, here is the code:
+cv21import numpy as np&amp;#10;&amp;#10;#cap = cv2.VideoCapture(0)&amp;#10;c = cv2.VideoCapture(0)&amp;#10;detected">
 <meta name="twitter:creator" content="@StartNao">
   
     <link rel="alternative" href="/atom.xml" title="StartNao" type="application/atom+xml">
@@ -77,39 +80,56 @@ ga('send', 'pageview');
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2015" class="archive-year">2015</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2015/04/14/Progression/" class="archive-article-date">
-  <time datetime="2015-04-14T06:16:50.000Z" itemprop="datePublished">Apr 14</time>
+        <section id="main"><article id="post-OpenCV-red-ball-detection" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/05/18/OpenCV-red-ball-detection/" class="article-date">
+  <time datetime="2015-05-18T13:02:16.000Z" itemprop="datePublished">18-05-2015</time>
 </a>
-      
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2015/04/14/Progression/">Where we are</a>
+    <h1 class="article-title" itemprop="name">
+      OpenCV, red ball detection
     </h1>
   
 
-    </header>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>[4] We are trying to detect red balls on the Nao. First we did it on our computer, here is the code:</p>
+<figure class="highlight"><figcaption><span>cv2</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import numpy as np&#10;&#10;#cap = cv2.VideoCapture(0)&#10;c = cv2.VideoCapture(0)&#10;detected = False&#10;while(detected is not True):&#10;&#10;    # Take each frame&#10;    _, img = c.read()&#10;    img = cv2.flip(img,5)&#10;&#10;    # Convert BGR to HSV&#10;    hsv = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)&#10;&#10;    #cv2.imshow(&#34;b&#34;, hsv)&#10;    # define range of blue color in HSV&#10;    lower_color = np.array([110,50,50], dtype=np.uint8)&#10;    upper_color = np.array([130,255,255], dtype=np.uint8)&#10;&#10;    # Threshold the HSV image to get only blue colors&#10;    mask = cv2.inRange(hsv, lower_color, upper_color)&#10;    #cv2.imshow(&#39;mask&#39;,mask)  &#10;    # Bitwise-AND mask and original image&#10;    res = cv2.bitwise_and(img,img, mask= mask)&#10;    #cv2.imshow(&#34;b&#34;, res)&#10;&#10;    imgray = cv2.cvtColor(res,cv2.COLOR_BGR2GRAY)&#10;    ret,thresh = cv2.threshold(imgray,127,255,0)&#10;    contours, hierarchy = cv2.findContours(imgray,cv2.RETR_TREE,cv2.CHAIN_APPROX_SIMPLE)&#10;    &#10;&#10;    #erode = cv2.erode(res,None,iterations = 3)&#10;    #dilate = cv2.dilate(erode,None,iterations = 10)&#10;    #contours,hierarchy = cv2.findContours(res,cv2.RETR_LIST,cv2.CHAIN_APPROX_SIMPLE)&#10;    for cnt in contours:&#10;&#10;        x,y,w,h = cv2.boundingRect(cnt)&#10;        print w,h&#10;        if(w &#60; 60 or h &#60; 60):&#10;            continue&#10;&#10;        cx,cy = x+w/2, y+h/2&#10;&#10;        if 20 &#60; res.item(cy,cx,0) &#60; 30:&#10;             #cv2.rectangle(f,(x,y),(x+w,y+h),[0,255,255],2)&#10;            print &#34;yellow :&#34;, x,y,w,h&#10;        elif 100 &#60; res.item(cy,cx,0) &#60; 120:&#10;             cv2.rectangle(img,(x,y),(x+w,y+h),[255,0,0],2)&#10;             print &#34;blue :&#34;, x,y,w,h&#10;        cv2.imshow(&#39;img&#39;,img)  &#10;&#10;    k = cv2.waitKey(5) &#38; 0xFF&#10;    if k == 27:&#10;        break&#10;&#10;cv2.destroyAllWindows()</span><br></pre></td></tr></table></figure>
+<p>On the computer, this code work fine, but on the Nao, it seems that the image processing is too slow. Our project manager contacted Aldebaran to know more about this issue.<br>They recommended us to use Nao library to import the camera image insted of using cv2 library.</p>
+<p>We are know trying to adapt our code to these guidelines to make all that work.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://startnao.github.io/2015/05/18/OpenCV-red-ball-detection/" data-id="ci9txc8id00048shcszr313r2" class="article-share-link">Share</a>
+      
+      
+    </footer>
   </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2015/05/16/Python-OpenCV-and-Nao/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Python, OpenCV and Nao</div>
+    </a>
+  
+</nav>
+
+  
 </article>
-  
-  
-    </div></section>
-  
+
 </section>
         
           <aside id="sidebar">

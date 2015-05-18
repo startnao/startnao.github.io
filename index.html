@@ -79,6 +79,46 @@ ga('send', 'pageview');
       <div class="outer">
         <section id="main">
   
+    <article id="post-OpenCV-red-ball-detection" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/05/18/OpenCV-red-ball-detection/" class="article-date">
+  <time datetime="2015-05-18T13:02:16.000Z" itemprop="datePublished">18-05-2015</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/05/18/OpenCV-red-ball-detection/">OpenCV, red ball detection</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>[4] We are trying to detect red balls on the Nao. First we did it on our computer, here is the code:</p>
+<figure class="highlight"><figcaption><span>cv2</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import numpy as np&#10;&#10;#cap = cv2.VideoCapture(0)&#10;c = cv2.VideoCapture(0)&#10;detected = False&#10;while(detected is not True):&#10;&#10;    # Take each frame&#10;    _, img = c.read()&#10;    img = cv2.flip(img,5)&#10;&#10;    # Convert BGR to HSV&#10;    hsv = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)&#10;&#10;    #cv2.imshow(&#34;b&#34;, hsv)&#10;    # define range of blue color in HSV&#10;    lower_color = np.array([110,50,50], dtype=np.uint8)&#10;    upper_color = np.array([130,255,255], dtype=np.uint8)&#10;&#10;    # Threshold the HSV image to get only blue colors&#10;    mask = cv2.inRange(hsv, lower_color, upper_color)&#10;    #cv2.imshow(&#39;mask&#39;,mask)  &#10;    # Bitwise-AND mask and original image&#10;    res = cv2.bitwise_and(img,img, mask= mask)&#10;    #cv2.imshow(&#34;b&#34;, res)&#10;&#10;    imgray = cv2.cvtColor(res,cv2.COLOR_BGR2GRAY)&#10;    ret,thresh = cv2.threshold(imgray,127,255,0)&#10;    contours, hierarchy = cv2.findContours(imgray,cv2.RETR_TREE,cv2.CHAIN_APPROX_SIMPLE)&#10;    &#10;&#10;    #erode = cv2.erode(res,None,iterations = 3)&#10;    #dilate = cv2.dilate(erode,None,iterations = 10)&#10;    #contours,hierarchy = cv2.findContours(res,cv2.RETR_LIST,cv2.CHAIN_APPROX_SIMPLE)&#10;    for cnt in contours:&#10;&#10;        x,y,w,h = cv2.boundingRect(cnt)&#10;        print w,h&#10;        if(w &#60; 60 or h &#60; 60):&#10;            continue&#10;&#10;        cx,cy = x+w/2, y+h/2&#10;&#10;        if 20 &#60; res.item(cy,cx,0) &#60; 30:&#10;             #cv2.rectangle(f,(x,y),(x+w,y+h),[0,255,255],2)&#10;            print &#34;yellow :&#34;, x,y,w,h&#10;        elif 100 &#60; res.item(cy,cx,0) &#60; 120:&#10;             cv2.rectangle(img,(x,y),(x+w,y+h),[255,0,0],2)&#10;             print &#34;blue :&#34;, x,y,w,h&#10;        cv2.imshow(&#39;img&#39;,img)  &#10;&#10;    k = cv2.waitKey(5) &#38; 0xFF&#10;    if k == 27:&#10;        break&#10;&#10;cv2.destroyAllWindows()</span><br></pre></td></tr></table></figure>
+<p>On the computer, this code work fine, but on the Nao, it seems that the image processing is too slow. Our project manager contacted Aldebaran to know more about this issue.<br>They recommended us to use Nao library to import the camera image insted of using cv2 library.</p>
+<p>We are know trying to adapt our code to these guidelines to make all that work.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://startnao.github.io/2015/05/18/OpenCV-red-ball-detection/" data-id="ci9txc8id00048shcszr313r2" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-Python-OpenCV-and-Nao" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2015/05/16/Python-OpenCV-and-Nao/" class="article-date">
@@ -125,7 +165,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://startnao.github.io/2015/05/16/Python-OpenCV-and-Nao/" data-id="ci9rehkjs0002tdhcso7btxsx" class="article-share-link">Share</a>
+      <a data-url="http://startnao.github.io/2015/05/16/Python-OpenCV-and-Nao/" data-id="ci9txc8hu00028shchqze0yvf" class="article-share-link">Share</a>
       
       
     </footer>
@@ -172,7 +212,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://startnao.github.io/2015/05/11/Improvements/" data-id="ci9rehkk90005tdhchtylubr5" class="article-share-link">Share</a>
+      <a data-url="http://startnao.github.io/2015/05/11/Improvements/" data-id="ci9txc8ig00068shcuoddm3wu" class="article-share-link">Share</a>
       
       
     </footer>
@@ -211,7 +251,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://startnao.github.io/2015/05/10/On-the-road/" data-id="ci9rehkk60004tdhc6wf4fp93" class="article-share-link">Share</a>
+      <a data-url="http://startnao.github.io/2015/05/10/On-the-road/" data-id="ci9txc8if00058shctny5ihar" class="article-share-link">Share</a>
       
       
     </footer>
@@ -257,7 +297,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://startnao.github.io/2015/04/14/Progression/" data-id="ci9rehkju0003tdhcyc5apr1y" class="article-share-link">Share</a>
+      <a data-url="http://startnao.github.io/2015/04/14/Progression/" data-id="ci9txc8hw00038shckbmvsze0" class="article-share-link">Share</a>
       
       
     </footer>
@@ -296,7 +336,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://startnao.github.io/2015/03/25/Welcome/" data-id="ci9rehkjp0001tdhcdaw2hql1" class="article-share-link">Share</a>
+      <a data-url="http://startnao.github.io/2015/03/25/Welcome/" data-id="ci9txc8hr00018shciwnigqvy" class="article-share-link">Share</a>
       
       
     </footer>
@@ -321,7 +361,7 @@ ga('send', 'pageview');
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">May 2015</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">April 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">March 2015</a><span class="archive-list-count">1</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">May 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">April 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">March 2015</a><span class="archive-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -331,6 +371,10 @@ ga('send', 'pageview');
     <h3 class="widget-title">Recents</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2015/05/18/OpenCV-red-ball-detection/">OpenCV, red ball detection</a>
+          </li>
         
           <li>
             <a href="/2015/05/16/Python-OpenCV-and-Nao/">Python, OpenCV and Nao</a>
@@ -346,10 +390,6 @@ ga('send', 'pageview');
         
           <li>
             <a href="/2015/04/14/Progression/">Where we are</a>
-          </li>
-        
-          <li>
-            <a href="/2015/03/25/Welcome/">Welcome</a>
           </li>
         
       </ul>
