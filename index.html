@@ -79,6 +79,91 @@ ga('send', 'pageview');
       <div class="outer">
         <section id="main">
   
+    <article id="post-Progression-1" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/05/30/Progression-1/" class="article-date">
+  <time datetime="2015-05-30T19:19:57.000Z" itemprop="datePublished">30-05-2015</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/05/30/Progression-1/">Progression</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>[Raphael,Adrien,Benjamin]<br>18/05/2015</p>
+<p>We finally succeed to test our code on the Nao robot, unfortunattely some errors appeared. We asked Titouan to help us in order to reprogram an « if » box. We didn’t find out what the real problem was.</p>
+<p>19/05/2015</p>
+<p>We found the solution to our problem, we reconfigured the « random int » box which returns a random number between 1 and 10. The robot will asked us 4 questions and then will stop. When we answer « NO » to the question « Would you like to play ? » , the robot will sit down and be quiet. If we wait 10s and say « Ok let’s play » to it, it will answer « Cool ! », get up and start to ask the questions.</p>
+<p>[Yani]</p>
+<p>Today, we tried to find out how to send movements request to the Nao robot through the computer terminal. As last week we could send “say” request but didn’t succeed in sending “motion” request. We are not sure if we can send direct request for motion through terminal. We found online some code in which the developers seem to create more or less their own keywords and syntax that implements the Nao movements. We’ve spend a lot of time trying to understand the code and building on top it. </p>
+<p>Firstly we could succeed in sending Say requests using the code found online. Just before the end of the work session we understood a little bit more about how are implemented the boxes found online. But we are not completely sure that we use it correctly and we are trying many different manipulations with. Here is the Boxes we found online:</p>
+<img src="/2015/05/30/Progression-1/screenshot.png">
+<p>The next step is to use the motions keywords.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://startnao.github.io/2015/05/30/Progression-1/" data-id="ciabfg7d40004bshc11ccj14t" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-OpenCV-in-a-Choregraph-Box" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/05/30/OpenCV-in-a-Choregraph-Box/" class="article-date">
+  <time datetime="2015-05-30T19:18:43.000Z" itemprop="datePublished">30-05-2015</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/05/30/OpenCV-in-a-Choregraph-Box/">OpenCV in a Choregraph Box</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>[2] The last time, we developed a way to analyze movement on our computer. Thus the next logical step is to put that code on the NAO in order to process image from its own camera.</p>
+<p>After struggling a bit on how to use the NAO camera service, we were soon able to fetch a frame from the camera and display its characteristics (width, height). The working code in the form of a Chrregraph box is available here:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># Cette box est une box basique permettant de rÃ©cupÃ©rer une image</span></span><br><span class="line"><span class="comment"># de la camÃ©ra de NAO (grÃ¢ve au service ALVideoDevice)</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyClass</span><span class="params">(GeneratedClass)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        GeneratedClass.__init__(self)</span><br><span class="line"></span><br><span class="line">        self.avd = <span class="keyword">None</span></span><br><span class="line">        self.strMyClientName = <span class="keyword">None</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">onLoad</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.connectToCamera()</span><br><span class="line">        self.getImageFromCamera()</span><br><span class="line">        self.disconnectFromCamera()</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">onUnload</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.avd = <span class="keyword">None</span></span><br><span class="line">        self.strMyClientName = <span class="keyword">None</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">onInput_onStart</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="comment">#self.onStopped() #activate the output of the box</span></span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">onInput_onStop</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.onUnload() <span class="comment">#it is recommended to reuse the clean-up as the box is stopped</span></span><br><span class="line">        self.onStopped() <span class="comment">#activate the output of the box</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">connectToCamera</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.log(<span class="string">"STARTNAO: connecting to camera..."</span>)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            self.avd = ALProxy(<span class="string">"ALVideoDevice"</span>)</span><br><span class="line"></span><br><span class="line">            self.strMyClientName = self.avd.subscribeCamera(</span><br><span class="line">                <span class="comment"># Name              # CameraNum     # Resolution    # Colorspace        # FPS</span></span><br><span class="line">                self.getName(),     <span class="number">0</span>,              <span class="number">1</span>,              <span class="number">11</span>,                 <span class="number">5</span></span><br><span class="line">            )</span><br><span class="line"></span><br><span class="line">            self.log(<span class="string">"STARTNAO: connected to camera"</span>)</span><br><span class="line">        <span class="keyword">except</span> BaseException, err:</span><br><span class="line">            self.log(<span class="string">"STARTNAO: error connecting to camera: %s"</span> % err)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">disconnectFromCamera</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.log(<span class="string">"STARTNAO: disconnecting from camera..."</span>)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            self.avd.unsubscribe( self.strMyClientName )</span><br><span class="line">        <span class="keyword">except</span> BaseException, err:</span><br><span class="line">            self.log(<span class="string">"STARTNAO: error disconnecting from camera: %s"</span> % err)</span><br><span class="line"></span><br><span class="line">        self.log(<span class="string">"STARTNAO: disconnected from camera"</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">getImageFromCamera</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.log(<span class="string">"STARTNAO: getting camera image..."</span>)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            dataImage = self.avd.getImageRemote(self.strMyClientName)</span><br><span class="line"></span><br><span class="line">            self.log(<span class="string">"STARTNAO: camera image is null: %s"</span> % dataImage <span class="keyword">is</span> <span class="keyword">None</span>)</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> dataImage <span class="keyword">is</span> <span class="keyword">not</span> <span class="keyword">None</span>:</span><br><span class="line">                self.log(<span class="string">"STARTNAO: camera image property [0]: %s"</span> % dataImage[<span class="number">0</span>])</span><br><span class="line">                self.log(<span class="string">"STARTNAO: camera image property [1]: %s"</span> % dataImage[<span class="number">1</span>])</span><br><span class="line">                self.log(<span class="string">"STARTNAO: camera image property [2]: %s"</span> % dataImage[<span class="number">2</span>])</span><br><span class="line"></span><br><span class="line">        <span class="keyword">except</span> BaseException, err:</span><br><span class="line">            self.log(<span class="string">"STARTNAO: error getting camera image: %s"</span> % err)</span><br><span class="line"></span><br><span class="line">        self.log(<span class="string">"STARTNAO: camera image got"</span>)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">None</span></span><br></pre></td></tr></table></figure>
+<p>This box is the basis we are currently using to implement the algorithm we tested on our computer. It uses the log system of Choregraph to display frame properties to test the camera.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://startnao.github.io/2015/05/30/OpenCV-in-a-Choregraph-Box/" data-id="ciabfg7df0006bshcfsh6vaku" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-OpenCV-red-ball-detection" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2015/05/18/OpenCV-red-ball-detection/" class="article-date">
@@ -109,7 +194,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://startnao.github.io/2015/05/18/OpenCV-red-ball-detection/" data-id="ci9txc8id00048shcszr313r2" class="article-share-link">Share</a>
+      <a data-url="http://startnao.github.io/2015/05/18/OpenCV-red-ball-detection/" data-id="ciabfg7dd0005bshcfhh06ax0" class="article-share-link">Share</a>
       
       
     </footer>
@@ -165,7 +250,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://startnao.github.io/2015/05/16/Python-OpenCV-and-Nao/" data-id="ci9txc8hu00028shchqze0yvf" class="article-share-link">Share</a>
+      <a data-url="http://startnao.github.io/2015/05/16/Python-OpenCV-and-Nao/" data-id="ciabfg7cw0002bshcs3mex307" class="article-share-link">Share</a>
       
       
     </footer>
@@ -212,7 +297,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://startnao.github.io/2015/05/11/Improvements/" data-id="ci9txc8ig00068shcuoddm3wu" class="article-share-link">Share</a>
+      <a data-url="http://startnao.github.io/2015/05/11/Improvements/" data-id="ciabfg7di0008bshcpb1hqs3w" class="article-share-link">Share</a>
       
       
     </footer>
@@ -251,7 +336,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://startnao.github.io/2015/05/10/On-the-road/" data-id="ci9txc8if00058shctny5ihar" class="article-share-link">Share</a>
+      <a data-url="http://startnao.github.io/2015/05/10/On-the-road/" data-id="ciabfg7dg0007bshceqti4x3i" class="article-share-link">Share</a>
       
       
     </footer>
@@ -297,7 +382,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://startnao.github.io/2015/04/14/Progression/" data-id="ci9txc8hw00038shckbmvsze0" class="article-share-link">Share</a>
+      <a data-url="http://startnao.github.io/2015/04/14/Progression/" data-id="ciabfg7cy0003bshcaa7qw3nk" class="article-share-link">Share</a>
       
       
     </footer>
@@ -336,7 +421,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://startnao.github.io/2015/03/25/Welcome/" data-id="ci9txc8hr00018shciwnigqvy" class="article-share-link">Share</a>
+      <a data-url="http://startnao.github.io/2015/03/25/Welcome/" data-id="ciabfg7ct0001bshc5yc2q0sy" class="article-share-link">Share</a>
       
       
     </footer>
@@ -361,7 +446,7 @@ ga('send', 'pageview');
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">May 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">April 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">March 2015</a><span class="archive-list-count">1</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">May 2015</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">April 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">March 2015</a><span class="archive-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -373,6 +458,14 @@ ga('send', 'pageview');
       <ul>
         
           <li>
+            <a href="/2015/05/30/Progression-1/">Progression</a>
+          </li>
+        
+          <li>
+            <a href="/2015/05/30/OpenCV-in-a-Choregraph-Box/">OpenCV in a Choregraph Box</a>
+          </li>
+        
+          <li>
             <a href="/2015/05/18/OpenCV-red-ball-detection/">OpenCV, red ball detection</a>
           </li>
         
@@ -382,14 +475,6 @@ ga('send', 'pageview');
         
           <li>
             <a href="/2015/05/11/Improvements/">Improvements</a>
-          </li>
-        
-          <li>
-            <a href="/2015/05/10/On-the-road/">On the road</a>
-          </li>
-        
-          <li>
-            <a href="/2015/04/14/Progression/">Where we are</a>
           </li>
         
       </ul>
